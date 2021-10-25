@@ -1,0 +1,358 @@
+{
+    "info": {
+        "_postman_id": "420af9ae-6234-400c-95c5-f5ebda0355a9",
+        "name": "Payment API Documentation",
+        "description": "An API for the Payment Server for CUSports",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "A request for external payment",
+            "id": "ce127701-07c7-46e2-833a-b8f2b904c266",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"payee_name\": \"eu fugiat dolore magna cillum\",\n    \"charge_amount\": 62359899.395132124,\n    \"card_number\": -26096384,\n    \"card_cvv\": -75582559,\n    \"card_expires\": \"ad ani\",\n    \"billing_address\": \"dolor amet ea\"\n}"
+                },
+                "url": {
+                    "raw": "{{baseUrl}}/pay",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "pay"
+                    ]
+                },
+                "description": "Lets the Cart Service make a request for an external payment method"
+            },
+            "response": [
+                {
+                    "id": "acbd3969-757f-4310-8241-91a3d6aa694b",
+                    "name": "Sample response: Details about a payment by ID",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"payee_name\": \"eu fugiat dolore magna cillum\",\n    \"charge_amount\": 62359899.395132124,\n    \"card_number\": -26096384,\n    \"card_cvv\": -75582559,\n    \"card_expires\": \"ad ani\",\n    \"billing_address\": \"dolor amet ea\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/pay",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "pay"
+                            ]
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "{\n \"payment_id\": -73183547,\n \"process_date\": \"reprehenderit fugia\"\n}"
+                },
+                {
+                    "id": "7a63caf9-b7b2-456b-83ce-43248baa6e3d",
+                    "name": "Unexpected error",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"payee_name\": \"eu fugiat dolore magna cillum\",\n    \"charge_amount\": 62359899.395132124,\n    \"card_number\": -26096384,\n    \"card_cvv\": -75582559,\n    \"card_expires\": \"ad ani\",\n    \"billing_address\": \"dolor amet ea\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/pay",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "pay"
+                            ]
+                        }
+                    },
+                    "status": "Bad Request",
+                    "code": 400,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "\"venia\""
+                }
+            ]
+        },
+        {
+            "name": "A request for a refund",
+            "id": "df72034d-91f7-4078-9203-3399eb427e97",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"payment_id\": -65611006,\n    \"refund_amount\": 77328922.4853324\n}"
+                },
+                "url": {
+                    "raw": "{{baseUrl}}/refund",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "refund"
+                    ]
+                },
+                "description": "Lets a service representative request a refund for a customer"
+            },
+            "response": [
+                {
+                    "id": "0d21a409-a7f6-41ff-9632-88dcefb00f92",
+                    "name": "Sample response: Details about a refund by ID",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"payment_id\": -65611006,\n    \"refund_amount\": 77328922.4853324\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/refund",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "refund"
+                            ]
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "{\n \"refund_id\": -3068557,\n \"process_date\": \"eu nisi ea tempor\"\n}"
+                },
+                {
+                    "id": "a4f66af5-066d-4c2b-a848-34471f804698",
+                    "name": "Unexpected error",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"payment_id\": -65611006,\n    \"refund_amount\": 77328922.4853324\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/refund",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "refund"
+                            ]
+                        }
+                    },
+                    "status": "Bad Request",
+                    "code": 400,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "\"venia\""
+                }
+            ]
+        },
+        {
+            "name": "Confirmation that a payment went through",
+            "id": "08722b5d-a500-4e0d-a141-554757497f15",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/payments/:payment_id",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "payments",
+                        ":payment_id"
+                    ],
+                    "variable": [
+                        {
+                            "id": "92c65ef9-8e6b-43c7-9cdc-8539ca1ed8f4",
+                            "key": "payment_id",
+                            "value": "171378",
+                            "description": "(Required) "
+                        }
+                    ]
+                },
+                "description": "Obtain confirmation about if the payment was successful"
+            },
+            "response": [
+                {
+                    "id": "808f0a70-a612-4a6f-b51b-dca70b9bccc7",
+                    "name": "Sample response: Details about a payment ID",
+                    "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/payments/:payment_id",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "payments",
+                                ":payment_id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "payment_id"
+                                }
+                            ]
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "{\n \"payement_id\": 74377552\n}"
+                },
+                {
+                    "id": "51b898c7-f16b-421c-8ac5-8d9225c89354",
+                    "name": "Payment Does Not Exist",
+                    "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/payments/:payment_id",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "payments",
+                                ":payment_id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "payment_id"
+                                }
+                            ]
+                        }
+                    },
+                    "status": "Not Found",
+                    "code": 404,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "\"venia\""
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "basic",
+        "basic": [
+            {
+                "key": "username",
+                "value": "<Basic Auth Username>",
+                "type": "string"
+            },
+            {
+                "key": "password",
+                "value": "<Basic Auth Password>",
+                "type": "string"
+            }
+        ]
+    },
+    "variable": [
+        {
+            "id": "0a09d9c8-0e9d-4ff1-b612-c2756815ad29",
+            "key": "baseUrl",
+            "value": "https://eba473b6-caa4-47e2-93a9-a529f5eee13f.mock.pstmn.io",
+            "type": "string"
+        }
+    ]
+}

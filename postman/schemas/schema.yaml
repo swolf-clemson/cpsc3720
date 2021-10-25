@@ -1,0 +1,162 @@
+openapi: 3.0.0
+info:
+  version: '1.0'
+  title: 'Payment API'
+servers:
+  - url: 'https://eba473b6-caa4-47e2-93a9-a529f5eee13f.mock.pstmn.io'
+  
+paths:
+  /pay:
+    post:
+      summary: 'A request for external payment'
+      requestBody:
+          required: true
+          content:
+              application/json:
+                  schema:
+                      $ref: '#/components/schemas/PaymentRequest'
+      responses:
+        '200':
+          description: 'Sample response: Details about a payment by ID'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '400':
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /refund:
+    post:
+      summary: 'A request for a refund'
+      requestBody:
+          required: true
+          content:
+              application/json:
+                  schema:
+                      $ref: '#/components/schemas/RefundRequest'
+      responses:
+        '200':
+          description: 'Sample response: Details about a refund by ID'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RefundResponse'
+        '400':
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /payments/{payment_id}:
+    get:
+      summary: 'Confirmation that a payment went through'
+      parameters:
+        - in: path
+          name: payment_id
+          required: true
+          schema: 
+              type: integer
+              format: int64
+      responses:
+        '200':
+          description: 'Sample response: Details about a payment ID'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentInfoRequest'
+        '404':
+          description: Payment Does Not Exist
+          content:
+            application/json:
+              schema:
+                type: string
+    
+      
+
+
+components:
+  schemas:
+    PaymentRequest:
+        type: object
+        required:
+            - payee_name
+            - charge_amount
+            - card_number
+            - card_cvv
+            - card_expires
+            - billing_address
+        properties:
+            payee_name:
+                type: string
+            charge_amount:
+                type: number
+                format: float
+            card_number:
+                type: integer
+                format: int64
+            card_cvv:
+                type: integer
+            card_expires:
+                type: string
+                format: datetime
+            billing_address:
+                type: string
+    PaymentResponse:
+        type: object
+        required:
+            - payment_id
+            - process_date
+        properties:
+            payment_id: 
+                type: integer
+                format: int64
+            process_date:
+                type: string
+                format: datetime   
+
+    RefundRequest:
+        type: object
+        required:
+            - payment_id
+            - refund_amount
+        properties:
+            payment_id: 
+                type: integer
+                format: int64
+            refund_amount:
+                type: number
+                format: float
+    RefundResponse: 
+        type: object
+        required:
+            - refund_id
+            - process_date
+        properties: 
+            refund_id:
+                type: integer
+                format: int64
+            process_date: 
+                type: string
+                format: datetime
+
+    PaymentInfoRequest:
+        type: object
+        required:
+            - payement_id
+        properties: 
+            payement_id:
+                type: integer
+                format: int64
+                
+
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+security:
+  - BasicAuth: []

@@ -6,7 +6,7 @@ servers:
   - url: 'https://eba473b6-caa4-47e2-93a9-a529f5eee13f.mock.pstmn.io'
   
 paths:
-  /pay:
+  /payment/pay:
     post:
       summary: 'A request for external payment'
       requestBody:
@@ -29,7 +29,7 @@ paths:
               schema:
                 type: string
 
-  /refund:
+  /payment/refund:
     post:
       summary: 'A request for a refund'
       requestBody:
@@ -52,7 +52,7 @@ paths:
               schema:
                 type: string
 
-  /payments/{payment_id}:
+  /payment/payments/{payment_id}:
     get:
       summary: 'Confirmation that a payment went through'
       parameters:

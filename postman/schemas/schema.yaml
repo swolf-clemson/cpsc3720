@@ -160,18 +160,6 @@ components:
             payement_id:
                 type: integer
                 format: int64
-
-    PaymentInfoDelete:
-        type: object
-        required:
-            - payement_id
-            - auth_token
-        properties: 
-            payement_id:
-                type: integer
-                format: int64
-            auth_token:
-                type: string
                 
   securitySchemes:
     BasicAuth:

@@ -84,47 +84,6 @@ paths:
               schema:
                 type: string
 
-    delete:
-        summary: 'Method to allow an admin to delete a payment using a payment ID. Requires an auth token'
-        parameters:
-        - in: path
-        name: payment_id
-        required: true
-        schema: 
-                type: integer
-                format: int64
-        requestBody:
-            required: true
-            content:
-                 application/json:
-                      schema:
-                          $ref: '#/components/schemas/PaymentInfoDelete'
-        responses:
-            '200':
-            description: 'Sample response: Payment successfully removed'
-            content:
-                application/json:
-                schema:
-                    $ref: '#/components/schemas/PaymentInfoRequest'
-
-            '400':
-            description: Bad Request
-            content:
-                application/json:
-                schema:
-                    type: string
-    
-            '404':
-            description: Payment Does Not Exist
-            content:
-                application/json:
-                schema:
-                    type: string
-
-      
-    
-
-
 components:
   schemas:
     PaymentRequest:

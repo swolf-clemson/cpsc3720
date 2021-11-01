@@ -93,6 +93,7 @@ components:
         type: object
         required:
             - payee_name
+            - payment_type
             - charge_amount
             - card_number
             - card_cvv
@@ -100,6 +101,8 @@ components:
             - billing_address
         properties:
             payee_name:
+                type: string
+            payment_type:
                 type: string
             charge_amount:
                 type: number

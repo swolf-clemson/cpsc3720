@@ -83,9 +83,45 @@ paths:
             application/json:
               schema:
                 type: string
-    
-      
 
+  /payment/delete/{payment_id}:
+    delete:
+      summary: 'Given a payment ID and an Admin Auth token, delete all record of the payment associated with that ID'
+      parameters:
+        - in: path
+          name: payment_id
+          required: true
+          schema: 
+              type: integer
+              format: int64
+      requestBody:
+          required: true
+          content:
+              application/json:
+                  schema:
+                      $ref: '#/components/schemas/DeletePaymentRequest'
+
+      responses:
+        '200':
+          description: 'Sample response: Details about a payment ID'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentInfoRequest'
+
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: string
+    
+        '404':
+          description: Payment Does Not Exist
+          content:
+            application/json:
+              schema:
+                type: string
 
 components:
   schemas:
@@ -93,6 +129,7 @@ components:
         type: object
         required:
             - payee_name
+            - payment_method
             - charge_amount
             - card_number
             - card_cvv
@@ -100,6 +137,8 @@ components:
             - billing_address
         properties:
             payee_name:
+                type: string
+            payment_method:
                 type: string
             charge_amount:
                 type: number
@@ -160,8 +199,15 @@ components:
             payement_id:
                 type: integer
                 format: int64
-                
 
+    DeletePaymentRequest:
+        type: object
+        required:
+            - admin_token
+        properties: 
+            admin_token:
+                type: string
+                
   securitySchemes:
     BasicAuth:
       type: http
